@@ -1,29 +1,28 @@
 "use strict";
 
 require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const shortid = require("shortid");
+const router = require("./router");
 
-// Express.js server, with CORS enabled, body-parser mounted
 const app = express();
+
+// Mount middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// Connect to Mongo database
+// Connect database
 mongoose.connect(
   process.env.MONGO_URI,
   { useNewUrlParser: true }
 );
 
-// Setup database schema
-// ...
-
-// Default landing page
+// Setup routing
 app.use(express.static("public"));
+app.use("/api/exercise", router);
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });

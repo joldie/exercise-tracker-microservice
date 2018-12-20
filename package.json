@@ -2,9 +2,8 @@
   "name": "exercise-tracker",
   "version": "0.0.1",
   "description": "Exercise tracker web app and API.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "joldie",
   "license": "CC0-1.0",
