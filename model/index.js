@@ -24,7 +24,15 @@ module.exports = (() => {
       })
       .catch(err => _errorHandler(err, cb));
   };
+  const getAllUsers = cb => {
+    User.find({}, "username _id")
+      .then(data => {
+        cb(data, 200);
+      })
+      .catch(err => _errorHandler(err, cb));
+  };
   return {
-    createUser
+    createUser,
+    getAllUsers
   };
 })();

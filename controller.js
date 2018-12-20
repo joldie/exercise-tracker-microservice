@@ -8,5 +8,10 @@ module.exports = {
     model.createUser(username, (response, code) => {
       res.status(code).send(response);
     });
+  },
+  getAllUsers: (req, res) => {
+    model.getAllUsers((response, code) => {
+      res.status(code).send(response);
+    });
   }
 };
