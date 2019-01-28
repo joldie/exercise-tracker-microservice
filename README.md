@@ -4,7 +4,40 @@ Exercise tracker web app and API.
 
 ## Description
 
-...
+API endpoints:
+
+- Create a new user:
+
+  `POST /api/exercise/new-user`
+
+  Input:
+
+  - username
+
+- Add exercises:
+
+  `POST /api/exercise/add`
+
+  Input:
+
+  - User ID
+  - Exercise description
+  - Exercise duration (minutes)
+  - Date (yyyy-mm-dd)
+
+- Get list of all users:
+
+  `GET /api/exercise/users`
+
+- Get users's exercise log:
+
+  `GET /api/exercise/log?{userId}[&from][&to][&limit]`
+
+  Input:
+
+  - userId (required)
+  - from, to (optional, yyyy-mm-dd)
+  - limit (optional, number)
 
 ## Contributing
 
