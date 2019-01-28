@@ -20,8 +20,10 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-// Setup routing
+// API routing
 app.use(express.static("public"));
+
+// Default landing page
 app.use("/api/exercise", router);
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");

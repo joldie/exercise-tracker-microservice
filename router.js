@@ -5,5 +5,6 @@ const controller = require("./controller");
 
 router.post("/new-user", controller.createUser);
 router.get("/users", controller.getAllUsers);
+router.post("/add", controller.addExercise);
 
 module.exports = router;

@@ -31,8 +31,31 @@ module.exports = (() => {
       })
       .catch(err => _errorHandler(err, cb));
   };
+  const addExercise = (userId, exercise, cb) => {
+    User.findById(userId)
+      .then(data => {
+        if (data == null) return cb({ message: "User ID not found" }, 200);
+        data.log.push(exercise);
+        data
+          .save()
+          .then(data => {
+            const lastExercise = data.log.pop();
+            const response = {
+              username: data.username,
+              _id: data._id,
+              description: lastExercise.description,
+              duration: lastExercise.duration,
+              date: new Date(lastExercise.date).toDateString()
+            };
+            cb(response, 200);
+          })
+          .catch(err => _errorHandler(err, cb));
+      })
+      .catch(err => _errorHandler(err, cb));
+  };
   return {
     createUser,
-    getAllUsers
+    getAllUsers,
+    addExercise
   };
 })();
