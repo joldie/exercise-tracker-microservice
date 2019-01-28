@@ -44,5 +44,17 @@ module.exports = {
     model.addExercise(userId, exercise, (response, code) => {
       res.status(code).send(response);
     });
+  },
+  getUserLog: (req, res) => {
+    const userId = req.query.userId.toString();
+    const from = Date.parse(req.query.from) || null;
+    const to = Date.parse(req.query.to) || null;
+    const limit = parseInt(req.query.limit) || null;
+
+    const params = { from, to, limit };
+
+    model.getUserLog(userId, params, (response, code) => {
+      res.status(code).send(response);
+    });
   }
 };
